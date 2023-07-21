@@ -34,7 +34,7 @@ const IndexPage = ({ allExchangers }: any) => {
         const { exchangerAddress, exchangerCurrencies } = newExchangerData;
 
         try {
-            const { data } = await nextApiInstance.post('/exchanger', {
+            const { data } = await nextApiInstance.post('/api/exchanger', {
                 address: exchangerAddress,
                 currencies: exchangerCurrencies,
             });

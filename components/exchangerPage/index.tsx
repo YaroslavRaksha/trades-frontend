@@ -80,14 +80,14 @@ const ExchangerPage = ({ exchangerData }: any) => {
 
     const getMorningExistenceData = async () => {
         const morningExistenceResponse = await nextApiInstance.get(
-            `/morningExistence/${id}?date=${selectedDate}`
+            `/api/morningExistence/${id}?date=${selectedDate}`
         );
         return morningExistenceResponse?.data || [];
     }
 
     const getTradesData = async () => {
         const tradesDataResponse = await nextApiInstance.get(
-            `/trades?exchangerId=${id}&date=${selectedDate}`
+            `/api/trades?exchangerId=${id}&date=${selectedDate}`
         );
 
         return tradesDataResponse?.data || [];
@@ -185,7 +185,7 @@ const ExchangerPage = ({ exchangerData }: any) => {
 
         const comingAmount = parseFloat(amount);
 
-        await nextApiInstance.put('/morningExistence/' + id, {
+        await nextApiInstance.put('/api/morningExistence/' + id, {
             date: selectedDate,
             currency: currency,
             amount: amount,
@@ -217,7 +217,7 @@ const ExchangerPage = ({ exchangerData }: any) => {
         const confirmDelete = confirm('Вы уверены что хотите удалить обменник?');
 
         if(confirmDelete) {
-            const { data } = await nextApiInstance.delete('/exchanger/' + id);
+            const { data } = await nextApiInstance.delete('/api/exchanger/' + id);
             const { ok } = data;
             if(ok) {
                 await router.push('/');

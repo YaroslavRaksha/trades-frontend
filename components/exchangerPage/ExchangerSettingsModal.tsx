@@ -31,7 +31,7 @@ const ExchangerSettingsModal = ({ exchangerId, currentDate, initialAddress, init
         }
         else {
             try {
-                const { data } = await nextApiInstance.put('/exchanger/' + exchangerId, {
+                const { data } = await nextApiInstance.put('/api/exchanger/' + exchangerId, {
                     date: currentDate,
                     address: newExchangerSettings.address,
                     currencies: newExchangerSettings.currencies

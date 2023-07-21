@@ -53,7 +53,7 @@ const TradeRow = ({ id, amount, course, onTradeUpdate, onTradeDelete, editRowAva
 
         if(newTradeData[key]?.length > 0) {
             try {
-                const { data } = await nextApiInstance.put('/trades/' + id, {
+                const { data } = await nextApiInstance.put('/api/trades/' + id, {
                     key: key,
                     value: newTradeData[key]
                 });
@@ -83,7 +83,7 @@ const TradeRow = ({ id, amount, course, onTradeUpdate, onTradeDelete, editRowAva
 
         if(confirmDelete) {
             try {
-                const { data } = await nextApiInstance.delete('/trades/' + id);
+                const { data } = await nextApiInstance.delete('/api/trades/' + id);
 
                 const { ok } = data;
 

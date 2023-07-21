@@ -19,7 +19,7 @@ export async function getServerSideProps(context: any) {
 
     try {
 
-        const exchangerResponse = await nextApiInstance.get('/exchanger/' + id);
+        const exchangerResponse = await nextApiInstance.get('/api/exchanger/' + id);
         exchangerData = exchangerResponse?.data;
         console.log(exchangerData);
 

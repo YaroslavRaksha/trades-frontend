@@ -10,7 +10,7 @@ export default function Index({ allExchangers }: any) {
 }
 
 export async function getServerSideProps(context: any) {
-    const { data } = await nextApiInstance.get('/exchanger/all');
+    const { data } = await nextApiInstance.get('/api/exchanger/all');
 
     return {
         props: {

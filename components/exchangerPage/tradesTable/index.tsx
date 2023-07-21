@@ -58,7 +58,7 @@ const TradesTable = ({ exchangerId, type, title, currency, data, onTradeAdd, onT
         const { course, amount } = newCurrencyRow;
         if(course?.length > 0 && amount?.length > 0) {
             try {
-                const { data } = await nextApiInstance.post('/trades', {
+                const { data } = await nextApiInstance.post('/api/trades', {
                     exchangerId: exchangerId,
                     type: type,
                     currency: currency,
