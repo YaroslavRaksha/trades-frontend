@@ -158,7 +158,7 @@ const TradesTable = ({ exchangerId, type, title, currency, data, onTradeAdd, onT
 
             <div className={styles.tradesTotal}>
                 <div>{totalAmount ? totalAmount : '-'}</div>
-                <div>{averageCourse ? averageCourse.toFixed(2) : '-'}</div>
+                <div>{averageCourse ? averageCourse.toFixed(4) : '-'}</div>
                 <div>{uahAmount ? uahAmount : '-'}</div>
             </div>
         </div>
