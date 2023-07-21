@@ -79,7 +79,7 @@ const IndexPage = ({ allExchangers }: any) => {
                         >
                             <div>{exchanger.address}</div>
                             <div className={styles.exchangerCurrencies}>
-                                {exchanger.currencies}
+                                {exchanger.currencies?.filter((c: any) => c !== 'uah')}
                             </div>
                         </div>
                     ))}
