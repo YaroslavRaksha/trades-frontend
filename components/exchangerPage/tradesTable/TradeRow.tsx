@@ -1,5 +1,5 @@
 import styles from "../../../styles/Exchanger.module.css";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import Input from "../../ctaComponents/Input";
 import nextApiInstance from "../../../utils/nextApiInstance";
 import getErrorMessage from "../../../helpers/getErrorMessage";
@@ -30,7 +30,14 @@ const TradeRow = ({ id, amount, course, onTradeUpdate, onTradeDelete, editRowAva
     const [tradeDataState, setTradeDataState] = useState<any>({
         amount: amount,
         course: course,
-    })
+    });
+
+    useEffect(() => {
+        setTradeDataState({
+            amount: amount,
+            course: course,
+        })
+    }, [amount, course])
 
     const [newTradeData, setNewTradeData] = useState<any>({
         amount: amount,

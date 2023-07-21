@@ -5,7 +5,7 @@ export type TradesDataType = {
     time: string,
     type: 'sale' | 'buy',
     amount: number,
-    course: number,
+    course: number | string,
     currency: string,
 }
 

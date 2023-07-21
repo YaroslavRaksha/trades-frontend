@@ -100,7 +100,7 @@
     color: #fff;
 }
 
-.tradesTable, .existenceTable {
+.tradesTable .tradesTableWrapper, .existenceTable {
     background: #fff;
     align-self: flex-start;
     box-shadow: var(--box-shadow);
@@ -112,13 +112,21 @@
     border-bottom: 1px solid var(--gray-50);
 }
 
+.tradesTotal {
+    margin-top: 20px;
+    display: grid;
+    box-shadow: var(--box-shadow);
+    background: var(--light);
+    grid-template-columns: 33.33% 33.33% 33.33%;
+}
+
 .rowWrapper {
     display: grid;
     grid-template-columns: 33.333% 33.333% 33.333%;
     border-bottom: 1px solid var(--gray-50);
 }
 
-.rowWrapper > div {
+.rowWrapper > div, .tradesTotal div {
     padding: 4px 12px 4px 20px;
     line-height: 42px;
     border-right: 1px solid var(--gray-50);
@@ -127,7 +135,7 @@
     font-weight: 300;
 }
 
-.rowWrapper div:last-child {
+.rowWrapper div:last-child, .tradesTotal div:last-child {
     border-right: none;
 }
 

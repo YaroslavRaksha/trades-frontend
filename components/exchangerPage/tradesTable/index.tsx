@@ -1,6 +1,6 @@
 import styles from '../../../styles/Exchanger.module.css';
 import Input from "../../ctaComponents/Input";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import Button from "../../ctaComponents/Button";
 import nextApiInstance from "../../../utils/nextApiInstance";
 import getErrorMessage from "../../../helpers/getErrorMessage";
@@ -95,56 +95,74 @@ const TradesTable = ({ exchangerId, type, title, currency, data, onTradeAdd, onT
         }
     }
 
+    const courseValues = data?.map((trade: any) => parseFloat(trade.course));
+    const sum = courseValues?.reduce((accumulator: any, currentValue: any) => accumulator + currentValue, 0);
+    const averageCourse = isNaN(sum / courseValues.length) ? '-' : (sum / courseValues.length).toFixed(4);
+
+    const amountValues = data?.map((trade: any) => parseFloat(trade.amount));
+    const totalAmount = amountValues?.reduce((accumulator: any, currentValue: any) => accumulator + currentValue, 0);
+
+    const uahValues = data?.map((trade: any) => parseFloat(trade.amount) * parseFloat(trade.course));
+    const uahAmount = uahValues?.reduce((accumulator: any, currentValue: any) => accumulator + currentValue, 0);
+
     return (
         <div className={styles.tradesTable}>
-            <h4>{title}</h4>
-            {data?.length > 0 && data.map(({ id, amount, course }, index) => (
-                <TradeRow
-                    id={id}
-                    key={index}
-                    amount={amount}
-                    course={course}
-                    onTradeUpdate={onTradeUpdate}
-                    onTradeDelete={onTradeDelete}
-                    editRowAvailable={editRowAvailable}
-                />
-            ))}
+            <div className={styles.tradesTableWrapper}>
+                <h4>{title}</h4>
+                {data?.length > 0 && data.map(({ id, amount, course }, index) => (
+                    <TradeRow
+                        id={id}
+                        key={index}
+                        amount={amount}
+                        course={course}
+                        onTradeUpdate={onTradeUpdate}
+                        onTradeDelete={onTradeDelete}
+                        editRowAvailable={editRowAvailable}
+                    />
+                ))}
 
-            {(editRowAvailable &&
-                <div className={styles.addCurrencyRow}>
-                    <div>
-                        <Input
-                            name='amount'
-                            placeholder={`Кол-во ${currency}`}
-                            value={newCurrencyRow.amount}
-                            onChange={handleInputChange}
-                            additionalProps={{
-                                ...updatedInputStyles,
-                                type: 'number'
-                            }}
-                        />
-                    </div>
-                    <div>
-                        <Input
-                            name='course'
-                            placeholder={`Курс ${currency}`}
-                            value={newCurrencyRow.course}
-                            onChange={handleInputChange}
-                            additionalProps={{
-                                ...updatedInputStyles,
-                                type: 'number'
-                            }}
-                        />
-                    </div>
-                    <div>
-                        <Button
-                            text='Добавить'
-                            onClick={handleSubmit}
-                            additionalProps={...updatedButtonStyles}
-                        />
-                    </div>
-                </div>)
-            }
+                {(editRowAvailable &&
+                    <div className={styles.addCurrencyRow}>
+                        <div>
+                            <Input
+                                name='amount'
+                                placeholder={`Кол-во ${currency}`}
+                                value={newCurrencyRow.amount}
+                                onChange={handleInputChange}
+                                additionalProps={{
+                                    ...updatedInputStyles,
+                                    type: 'number'
+                                }}
+                            />
+                        </div>
+                        <div>
+                            <Input
+                                name='course'
+                                placeholder={`Курс ${currency}`}
+                                value={newCurrencyRow.course}
+                                onChange={handleInputChange}
+                                additionalProps={{
+                                    ...updatedInputStyles,
+                                    type: 'number'
+                                }}
+                            />
+                        </div>
+                        <div>
+                            <Button
+                                text='Добавить'
+                                onClick={handleSubmit}
+                                additionalProps={...updatedButtonStyles}
+                            />
+                        </div>
+                    </div>)
+                }
+            </div>
+
+            <div className={styles.tradesTotal}>
+                <div>{totalAmount ? totalAmount : '-'}</div>
+                <div>{averageCourse}</div>
+                <div>{uahAmount ? uahAmount : '-'}</div>
+            </div>
         </div>
     )
 }
