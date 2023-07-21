@@ -95,15 +95,13 @@ const TradesTable = ({ exchangerId, type, title, currency, data, onTradeAdd, onT
         }
     }
 
-    const courseValues = data?.map((trade: any) => parseFloat(trade.course));
-    const sum = courseValues?.reduce((accumulator: any, currentValue: any) => accumulator + currentValue, 0);
-    const averageCourse = isNaN(sum / courseValues.length) ? '-' : (sum / courseValues.length).toFixed(4);
-
     const amountValues = data?.map((trade: any) => parseFloat(trade.amount));
     const totalAmount = amountValues?.reduce((accumulator: any, currentValue: any) => accumulator + currentValue, 0);
 
     const uahValues = data?.map((trade: any) => parseFloat(trade.amount) * parseFloat(trade.course));
     const uahAmount = uahValues?.reduce((accumulator: any, currentValue: any) => accumulator + currentValue, 0);
+
+    const averageCourse = uahAmount / totalAmount;
 
     return (
         <div className={styles.tradesTable}>
@@ -160,7 +158,7 @@ const TradesTable = ({ exchangerId, type, title, currency, data, onTradeAdd, onT
 
             <div className={styles.tradesTotal}>
                 <div>{totalAmount ? totalAmount : '-'}</div>
-                <div>{averageCourse}</div>
+                <div>{averageCourse ? averageCourse.toFixed(2) : '-'}</div>
                 <div>{uahAmount ? uahAmount : '-'}</div>
             </div>
         </div>
