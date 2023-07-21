@@ -1,0 +1,50 @@
+
+.allExchangersWrapper {
+    display: grid;
+    max-width: calc(100% - 90px);
+    grid-template-columns: 25% 25% 25% 25%;
+    grid-column-gap: 30px;
+}
+
+@media screen and (max-width: 1100px) {
+    .allExchangersWrapper {
+        max-width: calc(100% - 30px);
+        grid-template-columns: 50% 50%;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .allExchangersWrapper {
+        max-width: 100%;
+        grid-template-columns: 100%;
+    }
+}
+
+
+.exchangerCard, .addExchanger {
+    height: 100px;
+    width: 100%;
+    padding: 20px;
+    box-shadow: var(--box-shadow);
+    font-family: var(--font-mont);
+    background: #fff;
+    font-weight: 500;
+    border-radius: 8px;
+    transition: var(--transition);
+    margin-bottom: 30px;
+}
+
+.addExchanger {
+    background: var(--green-100);
+}
+
+.exchangerCard:hover, .addExchanger:hover {
+    cursor: pointer;
+    box-shadow: var(--hover-box-shadow);
+}
+
+.exchangerCurrencies {
+    color: var(--gray-300);
+    margin-top: 6px;
+    font-size: 13px;
+}

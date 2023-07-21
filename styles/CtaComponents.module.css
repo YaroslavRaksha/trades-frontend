@@ -1,0 +1,49 @@
+.input {
+    height: 44px;
+    font-family: var(--font-outfit);
+    font-size: 15px;
+    width: 100%;
+    line-height: 42px;
+    padding: 8px;
+    border: 1px solid var(--gray-300);
+    border-radius: 2px;
+    max-width: 100%;
+}
+
+.input:focus, .input:hover {
+    outline: none;
+    border-color: var(--blue-400);
+}
+
+.input::placeholder {
+    color: var(--gray-300);
+}
+
+.inputLabel {
+    font-size: 13px;
+    font-weight: 500;
+    font-family: var(--font-mont);
+    margin-bottom: 5px;
+}
+
+.button {
+    outline: none;
+    border: none;
+    font-family: var(--font-mont);
+    font-weight: 600;
+    font-size: 15px;
+    color: var(--light);
+    text-align: center;
+    height: 44px;
+    line-height: 44px;
+    cursor: pointer;
+    background: var(--blue-300);
+    transition: var(--transition);
+    width: 100%;
+}
+
+.button:hover {
+    background: var(--blue-400);
+}
+
+
