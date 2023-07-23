@@ -146,15 +146,21 @@
 }
 
 .rowWrapper .rowAmount:hover svg {
-    opacity: 1;
+    display: block;
     cursor: pointer;
     margin-top: 1px;
     pointer-events: all;
 }
 
-.rowWrapper .rowAmount svg {
-    transition: all 0.1s linear;
-    opacity: 0;
+.rowTime {
+    display: block;
+    font-size: 12px;
+    color: var(--gray-300);
+}
+
+.rowWrapper .rowAmount svg,
+.rowWrapper .rowAmount:hover .rowTime {
+    display: none;
     pointer-events: none;
 }
 

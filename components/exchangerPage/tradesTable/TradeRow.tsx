@@ -8,6 +8,7 @@ type Props = {
     id: number,
     amount: string | number,
     course: string | number,
+    time: string,
     onTradeUpdate: Function,
     onTradeDelete: Function,
     editRowAvailable: boolean | undefined,
@@ -20,7 +21,7 @@ const updatedInputStyles: any = {
     }
 }
 
-const TradeRow = ({ id, amount, course, onTradeUpdate, onTradeDelete, editRowAvailable, }: Props) => {
+const TradeRow = ({ id, amount, course, time, onTradeUpdate, onTradeDelete, editRowAvailable, }: Props) => {
 
     const [inputTypeVisible, setInputTypeVisible] = useState<any>({
         amount: false,
@@ -139,6 +140,9 @@ const TradeRow = ({ id, amount, course, onTradeUpdate, onTradeDelete, editRowAva
             <div className={styles.rowAmount}>
                 <span>
                     {(tradeDataState.amount * tradeDataState.course).toFixed(2)}
+                </span>
+                <span className={styles.rowTime}>
+                    {time}
                 </span>
                 {(editRowAvailable &&
                     <svg onClick={handleTradeDelete}

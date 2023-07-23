@@ -107,12 +107,13 @@ const TradesTable = ({ exchangerId, type, title, currency, data, onTradeAdd, onT
         <div className={styles.tradesTable}>
             <div className={styles.tradesTableWrapper}>
                 <h4>{title}</h4>
-                {data?.length > 0 && data.map(({ id, amount, course }, index) => (
+                {data?.length > 0 && data.map(({ id, amount, course, time }, index) => (
                     <TradeRow
                         id={id}
                         key={index}
                         amount={amount}
                         course={course}
+                        time={time}
                         onTradeUpdate={onTradeUpdate}
                         onTradeDelete={onTradeDelete}
                         editRowAvailable={editRowAvailable}
