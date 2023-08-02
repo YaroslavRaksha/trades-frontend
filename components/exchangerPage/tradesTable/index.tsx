@@ -54,7 +54,16 @@ const TradesTable = ({ exchangerId, type, title, currency, data, onTradeAdd, onT
         setNewCurrencyRow({ ...newCurrencyRow, [name]: value });
     }
 
+    const [isSubmitting, setIsSubmitting] = useState(false);
+
     const handleSubmit = async () => {
+
+        if (isSubmitting) {
+            return; // If already submitting, return early to prevent multiple clicks
+        }
+
+        setIsSubmitting(true);
+
         const { course, amount } = newCurrencyRow;
         if(course?.length > 0 && amount?.length > 0) {
             try {
@@ -87,7 +96,8 @@ const TradesTable = ({ exchangerId, type, title, currency, data, onTradeAdd, onT
                 setNewCurrencyRow({
                     amount: '',
                     course: '',
-                })
+                });
+                setIsSubmitting(false);
             }
         }
         else {
@@ -150,7 +160,10 @@ const TradesTable = ({ exchangerId, type, title, currency, data, onTradeAdd, onT
                             <Button
                                 text='Добавить'
                                 onClick={handleSubmit}
-                                additionalProps={...updatedButtonStyles}
+                                additionalProps={{
+                                    ...updatedButtonStyles,
+                                    disabled: isSubmitting,
+                                }}
                             />
                         </div>
                     </div>)

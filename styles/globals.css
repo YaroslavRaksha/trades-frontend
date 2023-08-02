@@ -49,6 +49,14 @@ a {
   text-decoration: none;
 }
 
+button {
+  cursor: pointer;
+}
+
+button[disabled]:hover {
+  cursor: wait;
+}
+
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   /* display: none; <- Crashes Chrome on hover */
