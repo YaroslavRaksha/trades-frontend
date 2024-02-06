@@ -2,7 +2,6 @@ import styles from '../styles/SideModal.module.css';
 import Button from "./ctaComponents/Button";
 import {ReactNode} from "react";
 
-
 type Props = {
     title: string,
     hideModal: any,
